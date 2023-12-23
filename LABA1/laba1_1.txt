@@ -1,0 +1,31 @@
+#include <iostream>
+#include <windows.h>
+#include <cmath>
+
+using namespace std;
+const int language = 1251;
+const int n = 3; // количество знаков
+
+int main()
+{
+    int input, output = 0;
+    SetConsoleOutputCP(language);
+    cout << "Введите трехзначное число: ";
+    cin >> input;
+    while (abs(input) > pow(10, n) or abs(input) < pow(10, n-1)) // проверка количества знаков
+    {
+        cout << "\nНеверный ввод. Введите трехзначное число ";
+        cin >> input;
+    }
+    if (input < 0) // добавление минуса при отрицательном вводе
+    {
+        cout << "-";
+        input = abs(input);
+    }
+    while (input != 0) {
+        output = output * 10;
+	output += input % 10;
+        cout << input % 10;
+        input /= 10;
+    }
+}

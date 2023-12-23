@@ -1,0 +1,29 @@
+#include <iostream>
+#include <windows.h>
+#include <cmath>
+using namespace std;
+const int language = 1251;
+const int n = 4; // количество символов
+
+int main()
+{
+    int input, output = 1;
+	SetConsoleOutputCP(language);
+    cout << "Введите четырехзначное число: ";
+    cin >> input;
+    while (abs(input) > pow(10, n) or abs(input) < pow(10, (n - 1))) // проверка ввода
+    {
+        cout << "\nНеверный ввод. Введите четырехзначное число ";
+        cin >> input;
+    }
+    if (input < 0) // проверка отрицательности ввода
+    {
+        output *= -1;
+        input = abs(input);
+    }
+    while (input > 0) {
+        output *= input % 10;
+        input = input / 10;
+    }
+    cout << "\n" << output;
+}
